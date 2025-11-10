@@ -1,0 +1,56 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  tags: string[];
+  readTime: string;
+}
+
+const { slug, title, excerpt, date, tags, readTime } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<a href={`/post/${slug}`} >
+  <div class="group cursor-pointer transition-all duration-300 hover:neon-border-glow hover:border-primary/50 bg-card/50 backdrop-blur-sm border border-border rounded-lg overflow-hidden">
+    <div class="p-6">
+      <div class="flex flex-wrap gap-2 mb-3">
+        {tags.map((tag) => (
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary/30">
+            {tag}
+          </span>
+        ))}
+      </div>
+      
+      <h3 class="text-2xl font-semibold group-hover:neon-gradient-text transition-all mb-2">
+        {title}
+      </h3>
+      
+      <p class="text-muted-foreground mt-2 mb-4">
+        {excerpt}
+      </p>
+      
+      <div class="flex items-center gap-4 text-sm text-muted-foreground">
+        <div class="flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <span>{formattedDate}</span>
+        </div>
+        
+        <div class="flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>{readTime}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

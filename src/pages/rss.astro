@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="RSS Feed - Karma & Code Blog">
+  <main class="min-h-screen">
+    <div class="container py-16">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold mb-6 neon-gradient-text">RSS Feed</h1>
+        
+        <div class="prose prose-lg max-w-none">
+          <p class="text-xl text-muted-foreground mb-8">
+            Stay up to date with the latest posts from Karma & Code blog using RSS.
+          </p>
+          
+          <div class="bg-card border border-border rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">📡 What is RSS?</h2>
+            <p>
+              RSS (Really Simple Syndication) is a web feed format that allows you to stay up-to-date with your favorite websites in a simple way. Instead of manually checking for new content, RSS feeds automatically deliver new posts directly to your RSS reader.
+            </p>
+          </div>
+          
+          <div class="bg-card border border-border rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">🔗 RSS Feed URL</h2>
+            <p class="mb-4">Our RSS feed is available at:</p>
+            <div class="bg-muted p-4 rounded-lg font-mono text-sm">
+              <code>https://karma-and-code.dev/rss.xml</code>
+            </div>
+            <p class="mt-4">
+              <a href="/rss.xml" class="text-primary hover:text-primary/80 transition-colors">
+                → View RSS Feed
+              </a>
+            </p>
+          </div>
+          
+          <div class="bg-card border border-border rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">📱 Popular RSS Readers</h2>
+            <p class="mb-4">Here are some popular RSS readers you can use:</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>Feedly</strong> - Web-based, mobile apps available</li>
+              <li><strong>Inoreader</strong> - Feature-rich web reader</li>
+              <li><strong>NewsBlur</strong> - Social RSS reader</li>
+              <li><strong>NetNewsWire</strong> - Native macOS and iOS app</li>
+              <li><strong>Feedbin</strong> - Premium web-based reader</li>
+              <li><strong>The Old Reader</strong> - Google Reader-like interface</li>
+            </ul>
+          </div>
+          
+          <div class="bg-card border border-border rounded-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">🚀 How to Subscribe</h2>
+            <ol class="list-decimal pl-6 space-y-3">
+              <li>Choose an RSS reader from the list above</li>
+              <li>Create an account if needed</li>
+              <li>Look for an "Add Feed" or "Subscribe" button</li>
+              <li>Copy and paste our RSS URL: <code class="bg-muted px-2 py-1 rounded">https://karma-and-code.dev/rss.xml</code></li>
+              <li>Enjoy automatic updates whenever we publish new content!</li>
+            </ol>
+          </div>
+          
+          <div class="mt-12 text-center">
+            <a 
+              href="/" 
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all neon-button-glow"
+            >
+              ← Back to Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .prose {
+    color: hsl(var(--foreground));
+  }
+  
+  .prose h2 {
+    color: hsl(var(--foreground));
+  }
+  
+  .prose p {
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .prose code {
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+  
+  .prose ul li,
+  .prose ol li {
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .prose strong {
+    color: hsl(var(--foreground));
+  }
+</style>

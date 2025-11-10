@@ -1,0 +1,38 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-border/50 mt-20">
+  <div class="container py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-muted-foreground text-sm">
+        © {currentYear} Karma & Code blog. All rights reserved.
+      </p>
+      
+      <div class="flex gap-6 text-sm">
+        <a 
+          href="https://github.com/juniordiasoliveira" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-muted-foreground hover:text-primary transition-colors"
+        >
+          GitHub
+        </a>
+        <a 
+          href="https://www.linkedin.com/in/juniordiasoliveira/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-muted-foreground hover:text-secondary transition-colors disabled"
+        >
+          LinkedIn
+        </a>
+        <a 
+          href="/rss" 
+          class="text-muted-foreground hover:text-accent transition-colors"
+        >
+          RSS
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

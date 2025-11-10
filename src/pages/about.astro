@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About | Karma & Code" description="Learn about Neon Dev Blog and what we cover">
+  <div class="min-h-screen flex flex-col bg-background text-foreground">
+    <Header />
+
+    <main class="flex-1 container py-16 max-w-4xl">
+      <h1 class="text-5xl font-bold mb-8 neon-gradient-text neon-glow-green">
+        About This Blog
+      </h1>
+
+      <div class="space-y-6 text-lg text-foreground/90 leading-relaxed">
+        <p>
+          Welcome to <span class="text-primary font-semibold">Neon Dev Blog</span>, a technical
+          blog dedicated to exploring the cutting edge of software development. Here, we dive deep
+          into modern web technologies, best practices, and architectural patterns that shape the
+          future of software engineering.
+        </p>
+
+        <p>
+          Our focus areas include <span class="text-secondary">React</span>, <span class="text-primary">TypeScript</span>,
+          modern CSS frameworks like <span class="text-accent">Tailwind CSS</span>, and web architecture
+          patterns that enable developers to build scalable, maintainable applications.
+        </p>
+
+        <div class="bg-card/30 backdrop-blur-sm border border-border/50 rounded-lg p-8 my-8 neon-border-glow">
+          <h2 class="text-3xl font-bold mb-4 neon-glow-cyan text-secondary">
+            What We Cover
+          </h2>
+          <ul class="space-y-3 text-foreground">
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-xl">▸</span>
+              <span>Modern frontend frameworks and libraries</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-secondary text-xl">▸</span>
+              <span>TypeScript patterns and best practices</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent text-xl">▸</span>
+              <span>CSS architecture and design systems</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-primary text-xl">▸</span>
+              <span>Web performance optimization</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-secondary text-xl">▸</span>
+              <span>Software architecture and design patterns</span>
+            </li>
+          </ul>
+        </div>
+
+        <p>
+          This blog is built with passion for clean code and modern aesthetics. The neon theme
+          reflects our belief that developer tools and content can be both functional and
+          visually striking.
+        </p>
+
+        <p class="text-muted-foreground italic">
+          Built with Astro, Tailwind CSS 4, TypeScript, and a love for neon aesthetics.
+        </p>
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</Layout>
