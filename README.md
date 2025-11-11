@@ -1,4 +1,4 @@
-# ⚡ Karma & Code
+# ⚡ Code & Karma
 
 A modern, high-performance blog built with cutting-edge web technologies and featuring a stunning neon-themed design. Exploring the edge of front-end development: React, TypeScript, design systems, and more.
 

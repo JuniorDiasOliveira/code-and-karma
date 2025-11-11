@@ -17,7 +17,7 @@ export const Logo: React.FC<LogoProps> = ({
   return (
     <img
       src="/logo.png"
-      alt="Karma & Code Logo"
+      alt="Code & Karma Logo"
       className={classes}
     />
   );

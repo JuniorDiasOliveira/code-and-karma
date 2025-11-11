@@ -57,7 +57,7 @@ export function SimpleLoader({ children, minLoadTime = 1500 }: SimpleLoaderProps
         <div className="relative z-10 text-center">
           <div className="mb-8">
             <h1 className="text-4xl font-bold bg-linear-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse">
-              Karma & Code
+              Code & Karma
             </h1>
           </div>
 

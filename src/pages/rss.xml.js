@@ -9,7 +9,7 @@ export async function GET(context) {
   
   return rss({
     // Required fields
-    title: 'Karma & Code Blog',
+    title: 'Code & Karma Blog',
     description: 'Exploring the edge of front-end development: React, TypeScript, design systems, and cutting-edge technologies.',
     site: context.site,
     
