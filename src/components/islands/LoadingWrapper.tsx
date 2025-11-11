@@ -6,7 +6,7 @@ interface LoadingWrapperProps {
   minLoadTime?: number;
 }
 
-export function LoadingWrapper({ children, minLoadTime = 3000 }: LoadingWrapperProps) {
+export function LoadingWrapper({ children, minLoadTime = 1500 }: LoadingWrapperProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
 
@@ -20,8 +20,6 @@ export function LoadingWrapper({ children, minLoadTime = 3000 }: LoadingWrapperP
   };
 
   useEffect(() => {
-    console.log('LoadingWrapper mounted'); // Debug log
-    // Force completion after minLoadTime + buffer to ensure it doesn't get stuck
     const forceComplete = setTimeout(() => {
       handleLoadComplete();
     }, minLoadTime + 1000);

@@ -5,7 +5,7 @@ interface SimpleLoaderProps {
   minLoadTime?: number;
 }
 
-export function SimpleLoader({ children, minLoadTime = 3000 }: SimpleLoaderProps) {
+export function SimpleLoader({ children, minLoadTime = 1500 }: SimpleLoaderProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [loadingText, setLoadingText] = useState('Initializing...');
@@ -13,26 +13,26 @@ export function SimpleLoader({ children, minLoadTime = 3000 }: SimpleLoaderProps
   useEffect(() => {
     console.log('SimpleLoader mounted');
     
-    // Progress animation
     const progressInterval = setInterval(() => {
       setProgress(prev => {
+        if (prev >= 100) return 100; 
         if (prev >= 95) return prev;
-        return prev + Math.random() * 8 + 2;
+        return Math.min(100, prev + Math.random() * 8 + 2);
       });
     }, 50);
 
     const textUpdates = [
-      { delay: 800, text: 'Loading components...' },
-      { delay: 1600, text: 'Activating effects...' },
-      { delay: 2400, text: 'Almost ready...' }
+      { delay: 400, text: 'Loading components...' },
+      { delay: 800, text: 'Activating effects...' },
+      { delay: 1200, text: 'Almost ready...' }
     ];
 
     const textTimeouts = textUpdates.map(({ delay, text }) =>
       setTimeout(() => setLoadingText(text), delay)
     );
 
-    // Complete loading
     const completeTimeout = setTimeout(() => {
+      clearInterval(progressInterval); 
       setProgress(100);
       setTimeout(() => {
         setIsLoading(false);

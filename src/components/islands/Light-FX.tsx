@@ -70,7 +70,6 @@ export function LightningFX({
         return () => {
             if (scheduleNext.current) window.clearTimeout(scheduleNext.current);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [minDelayMs, maxDelayMs]);
 
     const makePulse = (kind: "strong" | "weak") => {
