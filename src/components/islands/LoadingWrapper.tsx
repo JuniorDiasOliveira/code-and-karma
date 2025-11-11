@@ -23,7 +23,6 @@ export function LoadingWrapper({ children, minLoadTime = 3000 }: LoadingWrapperP
     console.log('LoadingWrapper mounted'); // Debug log
     // Force completion after minLoadTime + buffer to ensure it doesn't get stuck
     const forceComplete = setTimeout(() => {
-      console.log('Force completing loader'); // Debug log
       handleLoadComplete();
     }, minLoadTime + 1000);
 

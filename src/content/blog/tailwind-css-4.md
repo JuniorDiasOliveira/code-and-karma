@@ -45,4 +45,4 @@ OKLCH color space support provides more perceptually uniform colors.
 
 Improved error messages and better autocomplete make development smoother than ever.
 
-Tailwind CSS 4 sets a new standard for utility-first CSS frameworks.
+Amazing!
