@@ -1,0 +1,51 @@
+---
+/**
+ * Wrapper Astro para o LightningFX React Island
+ * Simplifica o uso do componente Lightning em páginas Astro
+ */
+
+interface Props {
+  minDelayMs?: number;
+  maxDelayMs?: number;
+  hue?: number;
+  strongCountRange?: [number, number];
+  weakCountRange?: [number, number];
+  allAtOnceChance?: number;
+  class?: string;
+}
+
+const {
+  minDelayMs = 3000,
+  maxDelayMs = 12000,
+  hue = 200,
+  strongCountRange = [2, 4],
+  weakCountRange = [1, 3],
+  allAtOnceChance = 0.2,
+  class: className = "",
+} = Astro.props;
+---
+
+<!-- Lightning Effect Container -->
+<div class:list={["lightning-wrapper relative isolate", className]}>
+  <!-- Conteúdo principal -->
+  <slot />
+  
+  <!-- Silhuetas (se fornecidas) -->
+  <div class="lightning-silhouettes">
+    <slot name="silhouettes" />
+  </div>
+</div>
+
+<style>
+  .lightning-silhouettes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .lightning-wrapper.lightning-active .lightning-silhouettes {
+    opacity: 1;
+  }
+</style>
