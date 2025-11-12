@@ -4,7 +4,7 @@ import HeroSilhouettes from "../islands/HeroSilhouettes.tsx";
 ---
 
 <LazyLightningWrapper
-  client:idle
+  client:visible
   minDelayMs={3000}
   maxDelayMs={12000}
   strongCountRange={[2, 4]}
@@ -73,5 +73,5 @@ import HeroSilhouettes from "../islands/HeroSilhouettes.tsx";
     >
     </div>
   </section>
-  <HeroSilhouettes />
+  <HeroSilhouettes client:visible />
 </LazyLightningWrapper>

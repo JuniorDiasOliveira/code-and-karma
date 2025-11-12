@@ -43,7 +43,7 @@ export async function GET(context) {
       <category>TypeScript</category>
       <ttl>60</ttl>
       <image>
-        <url>${context.site}/logo.png</url>
+        <url>${context.site}/logo.webp</url>
         <title>Karma &amp; Code Blog</title>
         <link>${context.site}</link>
         <width>144</width>

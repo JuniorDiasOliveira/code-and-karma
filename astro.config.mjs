@@ -1,25 +1,32 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import tailwindcss from '@tailwindcss/vite';
-
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
-
-// https://astro.build/config
 export default defineConfig({
   site: 'https://code-and-karma.pages.dev',
-  vite: {
-    plugins: [tailwindcss()]
-  },
+  compressHTML: true,
 
   integrations: [react(), sitemap()],
 
-  markdown: {
-    shikiConfig: {
-      theme: 'github-dark',
-      wrap: true,
+  vite: {
+    plugins: [tailwindcss()],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) return 'vendor';
+          },
+        },
+      },
     },
+    optimizeDeps: {
+      include: ['react', 'react-dom'],
+    },
+  },
+
+  markdown: {
+    shikiConfig: { theme: 'github-dark', wrap: true },
   },
 });

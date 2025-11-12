@@ -22,7 +22,7 @@ export const Logo: React.FC<LogoProps> = ({
 
   return (
     <img
-      src="/logo.png"
+      src="/logo.webp"
       alt="Code & Karma Logo"
       className={classes}
       loading={loadingStrategy}
