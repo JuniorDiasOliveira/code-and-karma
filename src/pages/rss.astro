@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { BackButton } from '../components';
 ---
 
 <Layout title="RSS Feed - Code & Karma Blog">
@@ -58,12 +59,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           
           <div class="mt-12 text-center">
-            <a 
-              href="/" 
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all neon-button-glow"
-            >
-              ← Back to Blog
-            </a>
+            <BackButton href="/" text="Back to Blog" variant="cta" />
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
+import { Header, Footer, PageContainer, BackButton } from '../../components';
+import Icon from '../../components/ui/Icon.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -27,18 +27,13 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
 ---
 
 <Layout title={`${post.data.title} | Code & Karma`} description={post.data.excerpt}>
-  <div class="min-h-screen flex flex-col bg-background text-foreground">
+  <PageContainer>
     <Header />
 
     <main class="flex-1">
       <article class="container py-12 max-w-4xl">
         <!-- Back button -->
-        <a href="/" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-colors mb-8 hover:text-primary">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-          </svg>
-          <span>Back to all posts</span>
-        </a>
+        <BackButton href="/" text="Back to all posts" class="mb-8" />
 
         <!-- Post header -->
         <header class="mb-12">
@@ -56,16 +51,12 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
 
           <div class="flex flex-wrap items-center gap-6 text-muted-foreground">
             <div class="flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-              </svg>
+              <Icon name="calendar" />
               <span>{formattedDate}</span>
             </div>
 
             <div class="flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
+              <Icon name="clock" />
               <span>{post.data.readTime}</span>
             </div>
 
@@ -82,16 +73,11 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
 
         <!-- Post footer -->
         <footer class="mt-16 pt-8 border-t border-border/50">
-          <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all neon-button-glow">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            <span>Back to all posts</span>
-          </a>
+          <BackButton href="/" text="Back to all posts" variant="cta" />
         </footer>
       </article>
     </main>
 
     <Footer />
-  </div>
+  </PageContainer>
 </Layout>

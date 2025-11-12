@@ -1,9 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/layout/Header.astro";
-import Footer from "../components/layout/Footer.astro";
+import { Header, Footer, PageContainer, BackButton } from "../components";
 import BlogCard from "../components/content/BlogCard.astro";
+import Icon from "../components/ui/Icon.astro";
+import StatsDisplay from "../components/ui/StatsDisplay.astro";
 
 // Buscar todos os posts do blog
 const allPosts = await getCollection("blog");
@@ -16,10 +17,16 @@ const totalPosts = allPosts.length;
 const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))];
 const recentPosts = sortedPosts.slice(0, 6);
 const olderPosts = sortedPosts.slice(6);
+
+// Stats para o componente
+const blogStats = [
+  { icon: 'folder', value: `${totalPosts} Articles`, color: 'primary' as const },
+  { icon: 'tag', value: `${allTags.length} Topics`, color: 'secondary' as const }
+];
 ---
 
-<Layout title="All Articles | Code & Karma" description="Explore all articles about front-end development, React, TypeScript, design systems and more">
-  <div class="min-h-screen flex flex-col bg-background text-foreground">
+<Layout title="Blog | Code & Karma" description="Explore articles about web development, React, TypeScript and modern JavaScript">
+  <PageContainer>
     <Header />
 
     <main class="flex-1">
@@ -43,21 +50,7 @@ const olderPosts = sortedPosts.slice(6);
             </p>
 
             <!-- Stats -->
-            <div class="mt-8 flex flex-wrap gap-6 text-sm">
-              <div class="flex items-center gap-2 text-primary">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
-                </svg>
-                <span>{totalPosts} Articles</span>
-              </div>
-              
-              <div class="flex items-center gap-2 text-secondary">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
-                </svg>
-                <span>{allTags.length} Topics</span>
-              </div>
-            </div>
+            <StatsDisplay stats={blogStats} />
           </div>
         </div>
       </section>
@@ -135,22 +128,14 @@ const olderPosts = sortedPosts.slice(6);
         </div>
       </section>
 
-      <!-- Back to Home -->
-      <section class="container pb-16">
+            <!-- Back to Home -->
+      <section class="container py-8">
         <div class="text-center">
-          <a
-            href="/"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-linear-to-r from-primary/20 to-secondary/20 border border-primary/40 text-primary hover:from-primary/30 hover:to-secondary/30 hover:border-primary/60 transition-all neon-button-glow"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            Back to Home
-          </a>
+          <BackButton href="/" text="Back to Home" variant="cta" />
         </div>
       </section>
     </main>
 
     <Footer />
-  </div>
+  </PageContainer>
 </Layout>

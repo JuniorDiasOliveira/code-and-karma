@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+
+export interface StatItem {
+  icon: string;
+  value: string;
+  color?: 'primary' | 'secondary' | 'accent';
+}
+
+export interface Props {
+  stats: StatItem[];
+  class?: string;
+}
+
+const { stats, class: className = '' } = Astro.props;
+
+const colorClasses = {
+  primary: 'text-primary',
+  secondary: 'text-secondary',
+  accent: 'text-accent'
+};
+---
+
+<div class={`mt-8 flex flex-wrap gap-6 text-sm ${className}`}>
+  {stats.map((stat) => (
+    <div class={`flex items-center gap-2 ${colorClasses[stat.color || 'primary']}`}>
+      <Icon name={stat.icon} />
+      <span>{stat.value}</span>
+    </div>
+  ))}
+</div>

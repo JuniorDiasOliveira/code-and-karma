@@ -1,11 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
+import { Header, Footer, PageContainer } from '../components';
 ---
 
 <Layout title="About Junior | Code & Karma" description="Learn about Junior Dias de Oliveira, front-end engineer and technology leader">
-  <div class="min-h-screen flex flex-col bg-background text-foreground">
+  <PageContainer>
     <Header />
 
     <main class="flex-1 container py-16 max-w-4xl">
@@ -69,5 +68,5 @@ import Footer from '../components/layout/Footer.astro';
     </main>
 
     <Footer />
-  </div>
+  </PageContainer>
 </Layout>
