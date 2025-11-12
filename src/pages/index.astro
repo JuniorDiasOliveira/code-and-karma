@@ -2,14 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
-import { SimpleLoader } from "../components/islands/SimpleLoader.tsx";
+import { OptimizedLoader } from "../components/islands/OptimizedLoader.tsx";
 import HeroSection from "../components/sections/HeroSection.astro";
 import LatestArticlesSection from "../components/sections/LatestArticlesSection.astro";
 import TechStackSection from "../components/sections/TechStackSection.astro";
 ---
 
 <Layout title="Code & Karma">
-  <SimpleLoader client:only="react" minLoadTime={1500}>
+  <OptimizedLoader client:only="react" minLoadTime={1800}>
     <div class="flex flex-col bg-background text-foreground">
       <Header />
       <HeroSection />
@@ -17,5 +17,5 @@ import TechStackSection from "../components/sections/TechStackSection.astro";
       <TechStackSection />
       <Footer />
     </div>
-  </SimpleLoader>
+  </OptimizedLoader>
 </Layout>

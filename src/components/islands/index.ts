@@ -1,4 +1,5 @@
 export { Logo } from './Logo.tsx';
-export { default as LightFX } from './Light-FX.tsx';
-export { HeroSilhouettes } from './HeroSilhouettes.tsx';
-export { SimpleLoader } from './SimpleLoader.tsx';
+export { LightningFX } from './Light-FX.tsx';
+export { default as HeroSilhouettes } from './HeroSilhouettes.tsx';
+export { OptimizedLoader } from './OptimizedLoader.tsx';
+export { LazyLightningWrapper } from './LazyLightningWrapper.tsx';

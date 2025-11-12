@@ -1,7 +1,8 @@
 export { LightningFX } from './islands/Light-FX.tsx';
 export { Logo } from './islands/Logo.tsx';
 export { default as HeroSilhouettes } from './islands/HeroSilhouettes.tsx';
-export { SimpleLoader } from './islands/SimpleLoader.tsx';
+export { OptimizedLoader } from './islands/OptimizedLoader.tsx';
+export { LazyLightningWrapper } from './islands/LazyLightningWrapper.tsx';
 
 export { default as Header } from './layout/Header.astro';
 export { default as Footer } from './layout/Footer.astro';

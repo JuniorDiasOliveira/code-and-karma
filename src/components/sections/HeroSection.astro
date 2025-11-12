@@ -1,10 +1,10 @@
 ---
-import { LightningFX } from "../islands/Light-FX.tsx";
+import { LazyLightningWrapper } from "../islands/LazyLightningWrapper.tsx";
 import HeroSilhouettes from "../islands/HeroSilhouettes.tsx";
 ---
 
-<LightningFX
-  client:only="react"
+<LazyLightningWrapper
+  client:idle
   minDelayMs={3000}
   maxDelayMs={12000}
   strongCountRange={[2, 4]}
@@ -74,4 +74,4 @@ import HeroSilhouettes from "../islands/HeroSilhouettes.tsx";
     </div>
   </section>
   <HeroSilhouettes />
-</LightningFX>
+</LazyLightningWrapper>

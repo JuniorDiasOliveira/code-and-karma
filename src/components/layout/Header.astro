@@ -9,7 +9,7 @@ const currentPath = Astro.url.pathname;
     <nav class="relative flex items-center justify-between">
       <a href="/">
         <div class="flex items-center gap-3">
-          <Logo client:only="react" />
+          <Logo client:only="react" priority loading="eager" />
         </div>
       </a>
 
