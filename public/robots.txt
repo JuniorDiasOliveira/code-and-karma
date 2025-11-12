@@ -1,0 +1,7 @@
+# robots.txt - Code & Karma
+# https://code-and-karma.pages.dev/
+
+User-agent: *
+Disallow:
+
+Sitemap: https://code-and-karma.pages.dev/sitemap-index.xml

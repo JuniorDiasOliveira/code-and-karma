@@ -4,15 +4,17 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
+
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://karma-and-code.dev', // Replace with your actual domain
+  site: 'https://code-and-karma.pages.dev',
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [react()],
+  integrations: [react(), sitemap()],
 
   markdown: {
     shikiConfig: {
