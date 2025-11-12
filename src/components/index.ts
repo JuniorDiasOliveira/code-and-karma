@@ -1,15 +1,14 @@
-// Islands (React Components - carregados no cliente)
-export { LightningFX } from './islands/Light-FX';
-export { Logo } from './islands/Logo';
-export { default as HeroSilhouettes } from './islands/HeroSilhouettes';
-export { default as CodeBlock } from './islands/CodeBlock';
+export { LightningFX } from './islands/Light-FX.tsx';
+export { Logo } from './islands/Logo.tsx';
+export { default as HeroSilhouettes } from './islands/HeroSilhouettes.tsx';
+export { SimpleLoader } from './islands/SimpleLoader.tsx';
 
-// Layout Components (Astro - renderizados no servidor)
 export { default as Header } from './layout/Header.astro';
 export { default as Footer } from './layout/Footer.astro';
 
-// Content Components (Astro - renderizados no servidor)
 export { default as BlogCard } from './content/BlogCard.astro';
+export { default as ProjectCard } from './content/ProjectCard.astro';
 
-// UI Components (Astro - renderizados no servidor)
-export { default as LightningWrapper } from './ui/LightningWrapper.astro';
+export { default as HeroSection } from './sections/HeroSection.astro';
+export { default as LatestArticlesSection } from './sections/LatestArticlesSection.astro';
+export { default as TechStackSection } from './sections/TechStackSection.astro';

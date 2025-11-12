@@ -206,18 +206,15 @@
 }
 @layer utilities {
   .neon-glow-green {
-    text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green),
-      0 0 30px var(--neon-green);
+    text-shadow: 0 0 4px rgba(0, 255, 128, 0.4), 0 0 8px rgba(0, 255, 128, 0.2);
   }
 
   .neon-glow-cyan {
-    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan),
-      0 0 30px var(--neon-cyan);
+    text-shadow: 0 0 4px rgba(0, 217, 245, 0.4), 0 0 8px rgba(0, 217, 245, 0.2);
   }
 
   .neon-glow-magenta {
-    text-shadow: 0 0 10px var(--neon-magenta), 0 0 20px var(--neon-magenta),
-      0 0 30px var(--neon-magenta);
+    text-shadow: 0 0 4px rgba(255, 0, 255, 0.4), 0 0 8px rgba(255, 0, 255, 0.2);
   }
 
   .neon-gradient-text {
@@ -234,19 +231,17 @@
 
   .neon-border-glow {
     border: 2px solid var(--neon-cyan);
-    box-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan),
-      0 0 60px rgba(0, 217, 245, 0.5), 0 0 80px rgba(0, 217, 245, 0.3),
-      inset 0 0 20px rgba(0, 217, 245, 0.2);
+    box-shadow: 0 0 8px rgba(0, 217, 245, 0.4), 0 0 16px rgba(0, 217, 245, 0.2),
+      inset 0 0 8px rgba(0, 217, 245, 0.1);
   }
 
   .neon-button-glow {
-    box-shadow: 0 0 15px var(--neon-green), 0 0 30px var(--neon-green);
+    box-shadow: 0 0 8px rgba(0, 255, 128, 0.3), 0 0 16px rgba(0, 255, 128, 0.15);
     transition: box-shadow 0.3s ease;
   }
 
   .neon-button-glow:hover {
-    box-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-green),
-      0 0 60px var(--neon-green);
+    box-shadow: 0 0 12px rgba(0, 255, 128, 0.4), 0 0 24px rgba(0, 255, 128, 0.2);
   }
 }
 
@@ -287,8 +282,8 @@
 
 /* util opcional pra texto neon suave */
 .neon-heading {
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.45),
-    0 0 20px rgba(255, 0, 255, 0.35);
+  text-shadow: 0 0 4px rgba(0, 255, 255, 0.25),
+    0 0 8px rgba(255, 0, 255, 0.15);
 }
 
 /* Animação de rotação customizada para 30 segundos */
@@ -317,8 +312,8 @@ pre.astro-code {
   border-radius: 0.5rem !important;
   margin: 2rem 0 !important;
   border: 2px solid var(--neon-cyan) !important;
-  box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px rgba(0, 217, 245, 0.6),
-    0 0 30px rgba(0, 217, 245, 0.3), inset 0 0 15px rgba(0, 217, 245, 0.15) !important;
+  box-shadow: 0 0 6px rgba(0, 217, 245, 0.3), 0 0 12px rgba(0, 217, 245, 0.2),
+    inset 0 0 8px rgba(0, 217, 245, 0.1) !important;
 }
 
 .prose pre.astro-code code,
@@ -330,23 +325,124 @@ pre.astro-code code {
   line-height: 1.6 !important;
 }
 
-/* Prose content spacing */
-.prose p,
-.prose-lg p {
-  line-height: 1.8 !important;
-  margin-bottom: 1.25rem !important;
+/* Prose Typography Styles */
+.prose h1,
+.prose-lg h1 {
+  font-size: 2.25rem !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  margin-top: 0 !important;
+  margin-bottom: 2rem !important;
+  background: linear-gradient(
+    90deg,
+    var(--neon-green) 0%,
+    var(--neon-cyan) 50%,
+    var(--neon-magenta) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: 0 0 4px rgba(0, 255, 255, 0.15) !important;
 }
 
 .prose h2,
 .prose-lg h2 {
-  margin-top: 2.5rem !important;
-  margin-bottom: 1.25rem !important;
+  font-size: 1.875rem !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+  margin-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 4px rgba(0, 217, 245, 0.4) !important;
 }
 
 .prose h3,
 .prose-lg h3 {
+  font-size: 1.5rem !important;
+  line-height: 1.4 !important;
+  font-weight: 600 !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.25rem !important;
+  color: var(--neon-green) !important;
+  text-shadow: 0 0 3px rgba(0, 255, 128, 0.5) !important;
+}
+
+.prose h4,
+.prose-lg h4 {
+  font-size: 1.25rem !important;
+  line-height: 1.4 !important;
+  font-weight: 600 !important;
   margin-top: 2rem !important;
   margin-bottom: 1rem !important;
+  color: var(--neon-magenta) !important;
+}
+
+.prose h5,
+.prose-lg h5 {
+  font-size: 1.125rem !important;
+  line-height: 1.5 !important;
+  font-weight: 600 !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.875rem !important;
+  color: var(--secondary) !important;
+}
+
+.prose h6,
+.prose-lg h6 {
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  font-weight: 600 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  color: var(--foreground) !important;
+}
+
+.prose p,
+.prose-lg p {
+  line-height: 1.8 !important;
+  margin-bottom: 1.25rem !important;
+  color: var(--muted-foreground) !important;
+}
+
+.prose ul,
+.prose-lg ul,
+.prose ol,
+.prose-lg ol {
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.prose li,
+.prose-lg li {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.7 !important;
+  color: var(--muted-foreground) !important;
+}
+
+.prose strong,
+.prose-lg strong {
+  font-weight: 700 !important;
+  color: var(--foreground) !important;
+}
+
+.prose em,
+.prose-lg em {
+  font-style: italic !important;
+  color: var(--secondary) !important;
+}
+
+.prose blockquote,
+.prose-lg blockquote {
+  border-left: 4px solid var(--neon-cyan) !important;
+  padding-left: 1.5rem !important;
+  margin: 2rem 0 !important;
+  font-style: italic !important;
+  color: var(--muted-foreground) !important;
+  background: rgba(0, 217, 245, 0.05) !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 0.5rem !important;
 }
 
 
