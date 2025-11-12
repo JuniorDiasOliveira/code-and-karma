@@ -1,6 +1,5 @@
 import React, { lazy, Suspense, useState, useEffect, useRef } from 'react';
 
-// Lazy load do componente pesado
 const LazyLightningFX = lazy(() => import('./Light-FX.tsx').then(module => ({ default: module.LightningFX })));
 
 interface LazyLightningWrapperProps {
@@ -29,7 +28,6 @@ export function LazyLightningWrapper({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Delay loading do JavaScript até o usuário ver a seção
           setTimeout(() => setShouldLoad(true), 500);
         }
       },
@@ -43,7 +41,6 @@ export function LazyLightningWrapper({
     return () => observer.disconnect();
   }, []);
 
-  // Fallback component sem JavaScript pesado
   if (!shouldLoad) {
     return (
       <div ref={sectionRef}>
