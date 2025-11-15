@@ -14,7 +14,7 @@ export const siteConfig = {
     github: "JuniorDiasOliveira",
     linkedin: "juniordiasoliveira"
   },
-  defaultOGImage: "/og-default.jpg",
+  defaultOGImage: "/og-default.png",
   keywords: [
     "Frontend Development",
     "React",

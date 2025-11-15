@@ -25,8 +25,8 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
   day: 'numeric'
 });
 
-// Generate OG image path (you can create dynamic OG images later)
-const ogImage = `/og-images/${post.slug}.jpg`;
+// Use default OG image for now (specific post images can be added later)
+const ogImage = `/og-default.png`;
 const publishedTime = new Date(post.data.date).toISOString();
 ---
 
