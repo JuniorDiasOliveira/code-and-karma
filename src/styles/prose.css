@@ -1,0 +1,236 @@
+.prose pre.astro-code,
+pre.astro-code {
+  background: oklch(0.12 0.02 250) !important;
+  padding: 1.5rem !important;
+  border-radius: 0.5rem !important;
+  margin: 2rem 0 !important;
+  border: 2px solid var(--neon-cyan) !important;
+  box-shadow: 0 0 6px rgba(0, 217, 245, 0.3), 0 0 12px rgba(0, 217, 245, 0.2),
+    inset 0 0 8px rgba(0, 217, 245, 0.1) !important;
+}
+
+.prose pre.astro-code code,
+pre.astro-code code {
+  background: transparent !important;
+  padding: 0 !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.95em !important;
+  line-height: 1.6 !important;
+}
+
+/* === HEADINGS === */
+.prose h1,
+.prose-lg h1 {
+  font-size: 2.25rem !important;
+  line-height: 1.2;
+  font-weight: 800;
+  margin-top: 0 !important;
+  margin-bottom: 2rem !important;
+  background: linear-gradient(
+    90deg,
+    var(--neon-green) 0%,
+    var(--neon-cyan) 50%,
+    var(--neon-magenta) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(0, 255, 255, 0.15);
+}
+
+.prose h2,
+.prose-lg h2 {
+  font-size: 1.875rem !important;
+  line-height: 1.3;
+  font-weight: 700;
+  margin-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 4px rgba(0, 217, 245, 0.4);
+}
+
+.prose h3,
+.prose-lg h3 {
+  font-size: 1.5rem !important;
+  line-height: 1.4;
+  font-weight: 600;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.25rem !important;
+  color: var(--neon-green) !important;
+  text-shadow: 0 0 3px rgba(0, 255, 128, 0.5);
+}
+
+.prose h4,
+.prose-lg h4 {
+  font-size: 1.25rem !important;
+  line-height: 1.4;
+  font-weight: 600;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  color: var(--neon-magenta) !important;
+}
+
+.prose h5,
+.prose-lg h5 {
+  font-size: 1.125rem !important;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.875rem !important;
+  color: var(--secondary) !important;
+}
+
+.prose h6,
+.prose-lg h6 {
+  font-size: 1rem !important;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  color: var(--foreground) !important;
+}
+
+/* === TEXT ELEMENTS === */
+.prose p,
+.prose-lg p {
+  line-height: 1.8 !important;
+  margin-bottom: 1.25rem !important;
+  color: var(--muted-foreground) !important;
+}
+
+.prose strong,
+.prose-lg strong {
+  font-weight: 700;
+  color: var(--foreground) !important;
+}
+
+.prose em,
+.prose-lg em {
+  font-style: italic;
+  color: var(--secondary) !important;
+}
+
+.prose u,
+.prose-lg u {
+  text-decoration: underline;
+  text-decoration-color: var(--neon-cyan);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  color: var(--foreground) !important;
+  text-shadow: 0 0 2px rgba(0, 217, 245, 0.2);
+}
+
+/* === LISTS === */
+.prose ul,
+.prose-lg ul,
+.prose ol,
+.prose-lg ol {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-left: 0 !important;
+}
+
+.prose li,
+.prose-lg li {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.8 !important;
+  color: var(--muted-foreground) !important;
+}
+
+/* Unordered Lists - Modern bullet style */
+.prose ul {
+  list-style: none !important;
+}
+
+.prose ul li {
+  position: relative;
+  padding-left: 1.75rem;
+}
+
+.prose ul li::before {
+  content: "▸";
+  color: var(--neon-cyan);
+  font-weight: 700;
+  font-size: 1.1em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-shadow: 0 0 3px rgba(0, 217, 245, 0.4);
+}
+
+/* Ordered Lists - Custom numbering */
+.prose ol {
+  list-style: none !important;
+  counter-reset: custom-counter;
+}
+
+.prose ol li {
+  position: relative;
+  padding-left: 2.25rem;  
+  counter-increment: custom-counter;
+}
+
+.prose ol li::before {
+  content: counter(custom-counter) ".";
+  color: var(--neon-green);
+  font-weight: 700;
+  font-size: 0.9em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 255, 128, 0.1);
+  padding: 0.2em 0.5em;
+  border-radius: 0.25rem;
+  min-width: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(0, 255, 128, 0.3);
+}
+
+/* === BLOCKQUOTES === */
+.prose blockquote,
+.prose-lg blockquote {
+  border-left: 4px solid var(--neon-cyan) !important;
+  padding-left: 1.5rem;
+  margin: 2rem 0 !important;
+  font-style: italic;
+  color: var(--muted-foreground) !important;
+  background: rgba(0, 217, 245, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+/* === HORIZONTAL RULE === */
+.prose hr,
+.prose-lg hr {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+  border: none !important;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--neon-cyan) 20%,
+    var(--neon-green) 50%,
+    var(--neon-cyan) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 4px rgba(0, 217, 245, 0.3);
+}
+
+/* === ARROW SYMBOL STYLING === */
+/* Arrow symbol styling - always white with slight glow */
+.prose .arrow-symbol,
+.prose-lg .arrow-symbol {
+  color: #ffffff !important;
+  font-weight: 600;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.prose a {
+  color: var(--neon-cyan) !important;
+  font-weight: 600;
+  text-shadow: 0 0 2px rgba(0, 217, 245, 0.4);
+}
