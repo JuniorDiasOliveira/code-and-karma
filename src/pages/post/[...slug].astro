@@ -24,9 +24,22 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric'
 });
+
+// Generate OG image path (you can create dynamic OG images later)
+const ogImage = `/og-images/${post.slug}.jpg`;
+const publishedTime = new Date(post.data.date).toISOString();
 ---
 
-<Layout title={`${post.data.title} | Code & Karma`} description={post.data.excerpt}>
+<Layout 
+  title={`${post.data.title} | Code & Karma`} 
+  description={post.data.excerpt}
+  image={ogImage}
+  imageAlt={`${post.data.title} - Code & Karma Blog`}
+  type="article"
+  publishedTime={publishedTime}
+  author={post.data.author}
+  tags={post.data.tags}
+>
   <PageContainer>
     <Header />
 

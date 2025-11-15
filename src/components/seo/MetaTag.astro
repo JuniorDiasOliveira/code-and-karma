@@ -1,0 +1,11 @@
+---
+// Component for additional custom meta tags
+interface Props {
+  property: string;
+  content: string;
+}
+
+const { property, content } = Astro.props;
+---
+
+<meta property={property} content={content} />
