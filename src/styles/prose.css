@@ -144,8 +144,10 @@ pre.astro-code code {
 }
 
 .prose ul li {
-  position: relative;
-  padding-left: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .prose ul li::before {
@@ -153,23 +155,87 @@ pre.astro-code code {
   color: var(--neon-cyan);
   font-weight: 700;
   font-size: 1.1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  flex-shrink: 0;
+  margin-right: 0.5rem;
   text-shadow: 0 0 3px rgba(0, 217, 245, 0.4);
 }
 
+/* Make li use row direction by default but column when has sublists */
+.prose ul li:not(:has(> ul)) {
+  flex-direction: row;
+}
+
+/* When li contains sublists, wrap content in a flex container */
+.prose ul li:has(> ul) {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.prose ul li:has(> ul) > ul {
+  flex-basis: 100%;
+  margin-left: 1.75rem !important;
+}
+
+/* Nested Unordered Lists */
+.prose ul ul {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.prose ul ul li::before {
+  content: "◦";
+  color: var(--neon-green);
+  font-size: 1.2em;
+}
+
+/* Remove duplicate bullets when ul is direct child of li */
+.prose li > ul {
+  margin-top: 0.5rem !important;
+}
+
+.prose ul ul ul li::before {
+  content: "▪";
+  color: var(--neon-magenta);
+  font-size: 0.9em;
+}
+
 /* Ordered Lists - Custom numbering */
+.prose {
+  counter-reset: section-counter;
+}
+
 .prose ol {
   list-style: none !important;
   counter-reset: custom-counter;
 }
 
+/* For top-level ol under h3, use section counter instead */
+.prose h3 + ol,
+.prose h3 ~ ol {
+  counter-reset: none;
+}
+
+.prose h3 + ol > li::before,
+.prose h3 ~ ol > li::before {
+  content: counter(section-counter) ".";
+}
+
+.prose h3 + ol > li,
+.prose h3 ~ ol > li {
+  counter-increment: section-counter;
+}
+
 .prose ol li {
-  position: relative;
-  padding-left: 2.25rem;  
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   counter-increment: custom-counter;
+}
+
+.prose ol li:not(:has(> ul)):not(:has(> ol)) {
+  flex-direction: row;
 }
 
 .prose ol li::before {
@@ -177,16 +243,61 @@ pre.astro-code code {
   color: var(--neon-green);
   font-weight: 700;
   font-size: 0.9em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  flex-shrink: 0;
+  align-self: flex-start;
   background: rgba(0, 255, 128, 0.1);
   padding: 0.2em 0.5em;
   border-radius: 0.25rem;
   min-width: 1.5rem;
   text-align: center;
   border: 1px solid rgba(0, 255, 128, 0.3);
+  margin-right: 0.5rem;
+}
+
+/* Nested Ordered Lists */
+.prose ol ol {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.prose ol ol li {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.prose ol ol li::before {
+  content: counter(custom-counter, lower-alpha) ".";
+  color: var(--neon-cyan);
+  background: rgba(0, 217, 245, 0.1);
+  border: 1px solid rgba(0, 217, 245, 0.3);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.prose ol ol ol li::before {
+  content: counter(custom-counter, lower-roman) ".";
+  color: var(--neon-magenta);
+  background: rgba(255, 0, 255, 0.1);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+/* Mixed nested lists (ol inside ul and vice versa) */
+.prose ul ol {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+  flex: 1;
+}
+
+.prose ol ul {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+  flex: 1;
+}
+
+/* Ensure nested lists take full width in flex container */
+.prose li > ul,
+.prose li > ol {
+  width: 100%;
 }
 
 /* === BLOCKQUOTES === */
@@ -233,4 +344,68 @@ pre.astro-code code {
   color: var(--neon-cyan) !important;
   font-weight: 600;
   text-shadow: 0 0 2px rgba(0, 217, 245, 0.4);
+}
+
+/* === CODE === */
+.prose code:not(pre code),
+.prose-lg code:not(pre code) {
+  background: rgba(0, 217, 245, 0.1);
+  color: var(--neon-cyan);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-weight: 600;
+  border: 1px solid rgba(0, 217, 245, 0.2);
+  font-family: var(--font-mono);
+}
+
+/* === TABLES === */
+.prose table,
+.prose-lg table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem 0;
+  border: 1px solid rgba(0, 217, 245, 0.3);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0, 217, 245, 0.2);
+}
+
+.prose thead,
+.prose-lg thead {
+  background: rgba(0, 217, 245, 0.1);
+  border-bottom: 2px solid var(--neon-cyan);
+}
+
+.prose th,
+.prose-lg th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 4px rgba(0, 217, 245, 0.4);
+  border-bottom: 2px solid rgba(0, 217, 245, 0.3);
+}
+
+.prose td,
+.prose-lg td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 217, 245, 0.15);
+  color: var(--muted-foreground);
+}
+
+.prose tbody tr,
+.prose-lg tbody tr {
+  transition: background 0.2s ease;
+}
+
+.prose tbody tr:hover,
+.prose-lg tbody tr:hover {
+  background: rgba(0, 217, 245, 0.05);
+}
+
+.prose tbody tr:last-child td,
+.prose-lg tbody tr:last-child td {
+  border-bottom: none;
 }
