@@ -56,7 +56,7 @@ const blogStats = [
 
       <!-- Recent Posts Section -->
       {recentPosts.length > 0 && (
-        <section class="container py-12">
+        <section class="container py-12" data-post-section>
           <div class="flex items-center gap-3 mb-8">
             <h2 class="text-3xl font-bold neon-glow-cyan text-secondary">
               Latest Articles
@@ -82,7 +82,7 @@ const blogStats = [
 
       <!-- All Posts Section -->
       {olderPosts.length > 0 && (
-        <section class="container pb-16">
+        <section class="container pb-16" data-post-section>
           <div class="flex items-center gap-3 mb-8">
             <h2 class="text-2xl font-bold text-foreground">
               Archive
@@ -113,16 +113,29 @@ const blogStats = [
             Explore by Topic
           </h3>
           
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-wrap gap-3" aria-label="Filter articles by topic">
+            <button
+              type="button"
+              data-topic-filter="all"
+              aria-pressed="true"
+              class="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-all hover:bg-primary/20 aria-pressed:bg-primary/30 aria-pressed:ring-2 aria-pressed:ring-primary/50"
+            >
+              All topics
+            </button>
             {allTags.map((tag) => (
-              <span class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 transition-all cursor-pointer">
+              <button
+                type="button"
+                data-topic-filter={tag}
+                aria-pressed="false"
+                class="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-all hover:bg-primary/20 aria-pressed:bg-primary/30 aria-pressed:ring-2 aria-pressed:ring-primary/50"
+              >
                 #{tag}
-              </span>
+              </button>
             ))}
           </div>
-          
-          <p class="text-muted-foreground mt-4 text-sm">
-            Click on any topic to filter articles (feature coming soon)
+
+          <p class="mt-4 text-sm text-muted-foreground" aria-live="polite" data-filter-status>
+            Showing all {totalPosts} articles
           </p>
         </div>
       </section>
@@ -138,3 +151,62 @@ const blogStats = [
     <Footer />
   </PageContainer>
 </Layout>
+
+<script>
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-topic-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-blog-card]');
+  const sections = document.querySelectorAll<HTMLElement>('[data-post-section]');
+  const status = document.querySelector<HTMLElement>('[data-filter-status]');
+
+  const applyTopicFilter = (topic: string) => {
+    const normalizedTopic = topic.toLocaleLowerCase();
+    let visibleArticles = 0;
+
+    cards.forEach((card) => {
+      const tags = (card.dataset.tags ?? '')
+        .split(',')
+        .map((tag) => tag.toLocaleLowerCase());
+      const isVisible = normalizedTopic === 'all' || tags.includes(normalizedTopic);
+
+      card.classList.toggle('hidden', !isVisible);
+      if (isVisible) visibleArticles += 1;
+    });
+
+    sections.forEach((section) => {
+      section.classList.toggle('hidden', !section.querySelector('[data-blog-card]:not(.hidden)'));
+    });
+
+    filterButtons.forEach((button) => {
+      button.setAttribute(
+        'aria-pressed',
+        String((button.dataset.topicFilter ?? '').toLocaleLowerCase() === normalizedTopic)
+      );
+    });
+
+    if (status) {
+      const topicLabel = normalizedTopic === 'all' ? 'all topics' : `#${topic}`;
+      status.textContent = `Showing ${visibleArticles} ${visibleArticles === 1 ? 'article' : 'articles'} for ${topicLabel}`;
+    }
+  };
+
+  const initialTopic = new URLSearchParams(window.location.search).get('topic') ?? 'all';
+  const availableTopics = [...filterButtons].map((button) => button.dataset.topicFilter ?? '');
+  const validInitialTopic = availableTopics.find(
+    (topic) => topic.toLocaleLowerCase() === initialTopic.toLocaleLowerCase()
+  ) ?? 'all';
+
+  applyTopicFilter(validInitialTopic);
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const topic = button.dataset.topicFilter ?? 'all';
+      const url = new URL(window.location.href);
+
+      if (topic === 'all') url.searchParams.delete('topic');
+      else url.searchParams.set('topic', topic);
+
+      window.history.replaceState({}, '', url);
+      applyTopicFilter(topic);
+    });
+  });
+</script>
