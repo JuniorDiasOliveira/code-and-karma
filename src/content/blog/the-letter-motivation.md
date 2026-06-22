@@ -1,7 +1,7 @@
 ---
 title: "Why I build the website The Letter"
 excerpt: "A simple problem from my own therapy sessions that became an idea"
-date: "2025-06-22"
+date: "2026-06-22"
 author: "Junior Oliveira"
 tags: ["Startup", "Mental health", "Journaling", "Side Project", "SaaS"]
 readTime: "1 min read"
