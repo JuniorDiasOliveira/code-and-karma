@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { Header, Footer, PageContainer, BackButton } from "../components";
 import BlogCard from "../components/content/BlogCard.astro";
-import Icon from "../components/ui/Icon.astro";
 import StatsDisplay from "../components/ui/StatsDisplay.astro";
 
 // Buscar todos os posts do blog
@@ -66,7 +65,7 @@ const blogStats = [
             </div>
           </div>
 
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div class="grid auto-rows-fr gap-6 md:grid-cols-2 lg:grid-cols-3">
             {recentPosts.map((post) => (
               <BlogCard
                 slug={post.slug}
@@ -92,7 +91,7 @@ const blogStats = [
             </div>
           </div>
 
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div class="grid auto-rows-fr gap-6 md:grid-cols-2 lg:grid-cols-3">
             {olderPosts.map((post) => (
               <BlogCard
                 slug={post.slug}

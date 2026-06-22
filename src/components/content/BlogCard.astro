@@ -19,36 +19,37 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 });
 ---
 
-<a href={`/post/${slug}`} >
-  <div class="group cursor-pointer transition-all duration-300 hover:neon-border-glow hover:border-primary/50 bg-card/50 backdrop-blur-sm border border-border rounded-lg overflow-hidden">
-    <div class="p-6">
-      <div class="flex flex-wrap gap-2 mb-3">
-        {tags.map((tag) => (
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary/30">
-            {tag}
-          </span>
-        ))}
-      </div>
-      
-      <h3 class="text-2xl font-semibold group-hover:neon-gradient-text transition-all mb-2">
-        {title}
-      </h3>
-      
-      <p class="text-muted-foreground mt-2 mb-4">
-        {excerpt}
-      </p>
-      
-      <div class="flex items-center gap-4 text-sm text-muted-foreground">
-        <div class="flex items-center gap-1">
-          <Icon name="calendar" size="sm" />
-          <span>{formattedDate}</span>
-        </div>
-        
-        <div class="flex items-center gap-1">
-          <Icon name="clock" size="sm" />
-          <span>{readTime}</span>
-        </div>
-      </div>
+<a
+  href={`/post/${slug}`}
+  class="group flex h-full overflow-hidden rounded-lg border border-border bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:neon-border-glow"
+>
+  <article class="flex h-full w-full flex-col p-6">
+    <div class="mb-3 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span class="inline-flex items-center rounded-full border border-secondary/30 bg-secondary/20 px-2.5 py-0.5 text-xs font-medium text-secondary hover:bg-secondary/30">
+          {tag}
+        </span>
+      ))}
     </div>
-  </div>
+
+    <h3 class="mb-2 text-2xl font-semibold transition-all group-hover:neon-gradient-text">
+      {title}
+    </h3>
+
+    <p class="mt-2 mb-4 min-h-[4.5rem] line-clamp-3 text-muted-foreground">
+      {excerpt}
+    </p>
+
+    <footer class="mt-auto flex items-center gap-4 text-sm text-muted-foreground">
+      <div class="flex items-center gap-1">
+        <Icon name="calendar" size="sm" />
+        <span>{formattedDate}</span>
+      </div>
+
+      <div class="flex items-center gap-1">
+        <Icon name="clock" size="sm" />
+        <span>{readTime}</span>
+      </div>
+    </footer>
+  </article>
 </a>
