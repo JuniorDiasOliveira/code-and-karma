@@ -117,7 +117,7 @@ Both perspectives helped shape the product.
 
 ## What happens next?
 
-[The Letter](https://theletter.eu). is still early.
+[The Letter](https://theletter.eu) is still early.
 
 There are no investors.
 
