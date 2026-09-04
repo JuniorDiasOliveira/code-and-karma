@@ -15,9 +15,9 @@ graph LR
     core --> data[data]
     data --> ui
 
-    style ui fill:#f87171,color:#111
-    style core fill:#f87171,color:#111
-    style data fill:#f87171,color:#111
+    style ui fill:#04110d,stroke:#00ffc2,stroke-width:2px,stroke-dasharray:5 5,color:#00ffc2
+    style core fill:#04110d,stroke:#00ffc2,stroke-width:2px,stroke-dasharray:5 5,color:#00ffc2
+    style data fill:#04110d,stroke:#00ffc2,stroke-width:2px,stroke-dasharray:5 5,color:#00ffc2
 ```
 *Nobody drew this on a whiteboard. It happened one PR at a time, and now nothing here can be changed in isolation.*
 
@@ -70,7 +70,11 @@ graph BT
     core["dashboard-core"] --> contracts
     core --> widgets
 
-    style contracts fill:#4ade80,color:#111
+    style contracts fill:#00251d,stroke:#00ffc2,stroke-width:3px,color:#00ffc2
+    style ui fill:#04110d,stroke:#0aa88a,stroke-width:1.5px,color:#8effe0
+    style data fill:#04110d,stroke:#0aa88a,stroke-width:1.5px,color:#8effe0
+    style widgets fill:#04110d,stroke:#0aa88a,stroke-width:1.5px,color:#8effe0
+    style core fill:#04110d,stroke:#0aa88a,stroke-width:1.5px,color:#8effe0
 ```
 *Every arrow points down, toward `contracts`. Nothing points back up. That's the whole rule, in one picture.*
 
