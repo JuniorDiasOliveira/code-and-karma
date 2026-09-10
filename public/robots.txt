@@ -1,7 +1,11 @@
 # robots.txt - Code & Karma
-# https://code-and-karma.pages.dev/
+# https://code-and-karma.com/
+
+# Allow search engines and AI assistants to crawl and reference the content,
+# but do not grant permission to use the content for AI training.
 
 User-agent: *
-Disallow:
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
 
-Sitemap: https://code-and-karma.pages.dev/sitemap-index.xml
+Sitemap: https://code-and-karma.com/sitemap-index.xml
